@@ -1,0 +1,20 @@
+---
+import { subMenuState } from "../stateStore";
+import { Image } from "astro:assets"; 
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif}', {eager: true, query: "?url", import: 'default'});
+const imageUrls = Object.keys(images);
+
+const filteredUrls = imageUrls.filter((item) => item.includes(subMenuState.value));
+
+---
+
+<div style={{display: 'grid' }}>     
+    {filteredUrls.map((item) => <Image src={item} alt="Image" layout="constrained" height='300' width='200'></Image>)}   
+</div>
+
+<script>
+
+import { subMenuState } from "../stateStore";
+
+</script>

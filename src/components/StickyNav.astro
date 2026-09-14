@@ -1,0 +1,87 @@
+---
+const email = "olive.stefanski@gmail.com";
+const subject = "Inquiry from website";
+---
+
+<header>
+    <a href="/" class="logo">Olive Stefanski</a>
+
+    <nav>
+        <ul>
+            <li><a href="#selected-work">Selected Work</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href={`mailto:${email}?subject=${encodeURIComponent(subject)}`}>Contact</a></li>
+            <li><a class="instagram-logo" href="https://www.instagram.com/floatyplace/" target="_blank"><img src="/images/instagram-svgrepo-com.svg" alt="Instagram link"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    transition: all 0.45s ease-out;
+    
+}
+
+header.sticky {
+    background-color: white;
+
+    & > .logo {
+        font-size: 1.7rem;
+    }
+
+    & ul > li {
+        font-size: 1.1rem;
+    }
+
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-family: Gloock;
+    transition: font-size 0.45s ease-in;
+}
+
+ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 2rem;
+}
+
+li {
+    font-size: 1.3rem;
+    transition: all 0.45s ease-out;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+    display: flex;
+
+    &:hover,
+    &:focus-visible {
+        color: var(--clr-blue);
+    }
+    
+    img {
+        width: 25px;
+        height: auto;
+        filter: invert(3%) sepia(12%) saturate(2248%) hue-rotate(223deg) brightness(97%) contrast(98%);
+        
+    }
+
+}
+
+
+
+</style>

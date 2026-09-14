@@ -1,0 +1,116 @@
+---
+const email = "olive.stefanski@gmail.com";
+const subject = "Inquiry from website";
+---
+
+
+<header>
+    <a href="/" class="logo">Olive Stefanski</a>
+
+    <nav>
+        <ul>
+            <li><a href="/#selected-work" >Selected Work</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href={`mailto:${email}?subject=${encodeURIComponent(subject)}`}>Contact</a></li>
+            <li><a class="instagram-logo" href="https://www.instagram.com/floatyplace/" target="_blank"><img src="/images/instagram-svgrepo-com.svg" alt="Instagram link"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    transition: all 0.45s ease-out;
+    background-color: white;
+    
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-family: Gloock;
+    transition: all 0.45s ease-in;
+}
+
+ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 1rem;
+}
+
+li {
+     font-size: 1.1rem;
+    transition: all 0.45s ease-out;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+    display: flex;
+    
+
+    &:hover,
+    &:focus-visible {
+        color: var(--clr-blue);
+    }
+    
+    img {
+        width: 25px;
+        height: auto;
+        filter: invert(3%) sepia(12%) saturate(2248%) hue-rotate(223deg) brightness(97%) contrast(98%);
+        
+    }
+}
+
+@media screen and (max-width: 50em) {
+   
+    header {
+        align-items: flex-start;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .logo {
+        padding: 1rem 1.4rem;
+
+    }
+
+    nav {
+        height: 100vh;
+        width: 60%;
+        background-color: var(--clr-light-turquoise);
+        
+    }
+
+    ul {
+        flex-direction: column;
+        text-align: center;
+        height: 100%;
+        margin-block-start: 20rem;
+        gap: 2em;
+
+        
+        
+        li {
+            font-size: clamp(14px, 3.5vw, 30px);
+
+            & img {
+                margin-block-start: 1em;
+                width: 40px;
+            }
+        }
+
+    
+    }
+}
+
+</style>

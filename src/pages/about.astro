@@ -1,0 +1,94 @@
+---
+import StaticNav from "../components/StaticNav.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../style.css";
+
+---
+
+
+<BaseLayout>
+    <StaticNav></StaticNav>
+
+    <div class="about-page">
+        <img class="about-image" src="/images/OliveStefanski-headshot.jpg" alt="artist-headshot">
+        <div class="links">
+            <a href="src\assets\Artist Statement (2026).pdf" class="artist-statement">Artist Statement</a>
+            <a href="src\assets\Olive Stefanski CV 2026.pdf" class="artist-statement">Resume</a>
+        </div>
+
+        <p class="about-artist">
+            Olive Stefanski (they/she) is a queer and Jewish visual artist based in Chicago who makes weavings, sculptures and drawings. They have had solo and duo exhibitions at Roman Susan Art Foundation (2021), Tiger Strikes Asteroid Chicago (2023) and Roots and Culture Contemporary Art Center (2025). Olive was a 2024-2025 Center for New Jewish Culture Fellow, a Digital Weaving Lab Artist-In-Residence at Praxis Fiber Workshop (2025) and a Writer-In-Residence at Writing Space. (Fall 2025).  Olive’s studio was awarded the Chicago DCASE Individual Artist Program Grant (2023) and the Illinois Arts Council’s Creative Catalyst Grant (2024) and was nominated for a 3Arts Award in the Visual Arts category in 2025. Olive’s work is held in private collections across the United States and Europe and they have shown in group exhibitions across the United States and Mexico. They earned an MFA in Studio Art from the School of the Art Institute of Chicago and a BA in Women's and Gender Studies from DePaul University. Their work has been published in catalogues by the American Tapestry Alliance (2024), Roman Susan Art Foundation (forthcoming 2026), and Praxis Fiber Workshop (Forthcoming 2026).      
+            <br>
+            <br>
+            Olive is available to be contacted for studio related inquires such as: exhibition invitations, commission requests for handwoven rugs (of all sizes, up to area rug), studio visit requests, inquiries into collecting work, artist talk and class visit invitations, press inquiries, opportunities for grants or fiscal sponsorship. 
+            <br>
+            <br>
+            Email: olive.stefanski@gmail.com 
+            <br>
+            Studio’s instagram: @floatyplace 
+        </p>
+    </div>
+</BaseLayout>
+
+<style>
+
+    .about-page {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: min(95%, 70rem);
+        margin-inline: auto;
+        padding-block: 10rem 25px;
+        gap: 1.5rem;
+    }
+
+    .about-image {
+        max-width: 350px;
+    }
+
+    .links {
+        grid-row-start: 3;
+        
+        a {
+            display: block;
+            text-decoration: underline;
+            color: var(--clr-blue);
+            opacity: 80%;
+            font-size: 1.3rem;
+        }
+    }
+
+
+    
+    @media screen and (min-width: 1030px) {
+        
+        .about-page {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         grid-template-rows: repeat(2, 20rem);
+         width: min(95%, 70rem);
+         margin-inline: auto;
+         padding-block: 150px 25px;
+         gap: 1.5rem;
+        }
+
+        p {
+        margin: 0;
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+
+        .links {
+         grid-column-start: 1;
+         grid-column-end: 2;
+         grid-row-start: 2;
+         grid-row-end: 3;
+
+        a   {
+            display: block;
+            text-align: end;
+            }
+        }
+    }
+
+
+</style>
