@@ -2,9 +2,11 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 
+import netlify from '@astrojs/netlify';
+
 // https://astro.build/config
 export default defineConfig({
-
-    integrations: [react()],
-    trailingSlash: 'never'
+  integrations: [react()],
+  trailingSlash: 'always',
+  adapter: netlify()
 });

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../style.css';
 
 
+
 export function SubMenuSelectedWork ({items}) {
     
     const [activeMedium, setcurrentMedium] = useState("weavings");
@@ -12,6 +13,7 @@ export function SubMenuSelectedWork ({items}) {
     function handleClick(e) {
         const className = e.target.className;
         setcurrentMedium(className);
+        console.log(filteredUrls);
     }
 
     const filteredUrls = items.filter((item) => item.includes(activeMedium));
