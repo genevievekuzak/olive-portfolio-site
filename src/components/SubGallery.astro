@@ -2,8 +2,9 @@
 import type { ImageMetadata } from 'astro';
 import SubMenuSelectedWork from "./SubMenuSelectedWork";
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,JPG,png,gif}', {eager: true, query: "?url", import: 'default'});
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/**/*.{jpeg,jpg,JPG,png,gif}', {eager: true, query: "?url", import: 'default'});
 const imageUrls = Object.keys(images);
+if (!images) throw new Error('does not exist in glob');
 ---
 
 <SubMenuSelectedWork items={imageUrls} client:load></SubMenuSelectedWork>
