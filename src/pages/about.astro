@@ -11,7 +11,11 @@ import "../style.css";
     <StickyNav></StickyNav>
 
     <div class="about-page">
-        <img class="about-image" src="/images/OliveStefanski-headshot.jpg" alt="artist-headshot">
+        <figure>
+            <img class="about-image" src="/images/OliveStefanski-headshot.jpg" alt="artist-headshot">
+            <figcaption>Photography by Mariam Vila</figcaption>
+        </figure>
+        
         <div class="links">
             <a href="/assets/Artist Statement (2026).pdf" class="artist-statement">Artist Statement</a>
             <a href="/assets/Olive Stefanski CV 2026.pdf" class="artist-statement">Resume</a>
@@ -44,6 +48,15 @@ import "../style.css";
 
     .about-image {
         max-width: 350px;
+    }
+
+    figure {
+        margin: 0;
+
+        figcaption {
+            color: var(--clr-blue);
+            font-size: 0.8rem;
+        }
     }
 
     .links {
