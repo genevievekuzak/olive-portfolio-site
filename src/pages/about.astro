@@ -1,5 +1,6 @@
 ---
 import StaticNav from "../components/StaticNav.astro";
+import StickyNav from "../components/StickyNav.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../style.css";
 
@@ -7,13 +8,13 @@ import "../style.css";
 
 
 <BaseLayout>
-    <StaticNav></StaticNav>
+    <StickyNav></StickyNav>
 
     <div class="about-page">
         <img class="about-image" src="/images/OliveStefanski-headshot.jpg" alt="artist-headshot">
         <div class="links">
-            <a href="src\assets\Artist Statement (2026).pdf" class="artist-statement">Artist Statement</a>
-            <a href="src\assets\Olive Stefanski CV 2026.pdf" class="artist-statement">Resume</a>
+            <a href="/src/assets\Artist Statement (2026).pdf" class="artist-statement">Artist Statement</a>
+            <a href="/src/assets\Olive Stefanski CV 2026.pdf" class="artist-statement">Resume</a>
         </div>
 
         <p class="about-artist">

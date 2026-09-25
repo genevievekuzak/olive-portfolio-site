@@ -3,182 +3,187 @@ import StickyNav from "./StickyNav.astro";
 import '../style.css'
 ---
 
-<section class="hero-section">
+<html>
+   <head>
+          <meta charset="UTF-8" />
+   </head>
+   <section class="hero-section">
     <StickyNav />
-    <div class="img-wrapper">
-      <!-- <img class="hero-image" src="/images/art/VoidMotherTehom.jpg" alt="Void Mother Tehom 2020"> -->
-      <div class="slideshow-wrapper">
+
+      <div class="slider">
          <div class="slides">
-            <input type="radio" name="radio-btn" id="radio1">
-            <input type="radio" name="radio-btn" id="radio2">
-            <input type="radio" name="radio-btn" id="radio3">
-            <input type="radio" name="radio-btn" id="radio4">
-            <input type="radio" name="radio-btn" id="radio5">
-
             <div class="slide first">
-               <img src="src\assets\Intro-Pics\1.jpg" alt="woods intro image">
+               <img src="/src/assets/Intro-Pics/1.jpg" alt="woods intro image">
             </div>
             <div class="slide">
-               <img src="src\assets\Intro-Pics\2.jpg" alt="woods intro image">
+               <img src="/src/assets/Intro-Pics/2.jpg" alt="woods intro image">
             </div>
             <div class="slide">
-               <img src="src\assets\Intro-Pics\3.jpg" alt="woods intro image">
+               <img src="/src/assets/Intro-Pics/3.jpg" alt="woods intro image">
             </div>
             <div class="slide">
-               <img src="src\assets\Intro-Pics\4.jpg" alt="woods intro image">
+               <img src="/src/assets/Intro-Pics/4.jpg" alt="woods intro image">
             </div>
             <div class="slide">
-               <img src="src\assets\Intro-Pics\5.jpg" alt="woods intro image">
+               <img src="/src/assets/Intro-Pics/5.jpg" alt="woods intro image">
             </div>
-
-            <div class="navigation-auto">
-               <div class="auto-btn1"></div>
-               <div class="auto-btn2"></div>
-               <div class="auto-btn3"></div>
-               <div class="auto-btn4"></div>
-               <div class="auto-btn5"></div>
-            </div>
-
-            <div class="navigation-manual">
-               <label for="radio1" class="manual-btn"></label>
-               <label for="radio2" class="manual-btn"></label>
-               <label for="radio3" class="manual-btn"></label>
-               <label for="radio4" class="manual-btn"></label>
-               <label for="radio5" class="manual-btn"></label>
-            </div>
-
          </div>
+         <button class="prev">&#10094</button>
+         <button class="next">&#10095</button>
       </div>
-   </div>
-   
+
 </section>
+</html>
+
+<script>
+
+   const slides = document.querySelectorAll<HTMLElement>(".slides img");
+   let slideIndex = 0;
+   let intervalId = null;
+
+   const nextButton = document?.querySelector(".next")?.addEventListener('click', () => {
+      nextSlide();
+   })
+
+   const prevButton = document?.querySelector(".prev")?.addEventListener('click', () => {
+      prevSlide();
+   })
+
+   initializeSlider();
+   
+   function initializeSlider() {
+      slides[slideIndex].classList.add("displaySlide");
+      // intervalId = setInterval(nextSlide, 5000);
+   }
+
+   function showSlide(index: number) {
+      
+      if (index >= slides.length) {
+         slideIndex = 0;
+      } else if(index < 0) {
+         slideIndex = slides.length - 1;
+
+      }
+      
+      slides.forEach(slide => {
+         slide.classList.remove("displaySlide");
+      });
+      slides[slideIndex].classList.add("displaySlide");
+   }
+
+   function prevSlide() {
+      slideIndex--;
+      showSlide(slideIndex);
+   }
+
+   function nextSlide() {
+      slideIndex++;
+      showSlide(slideIndex);
+   }
+   
+   
+</script>
+
 
 <style>
 
- .img-wrapper {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-block-start: 5rem;
-   height: 650px;
-
-   .slideshow-wrapper {
-      width: 1200px;
-      height: 650px;
+   .slider {
+      position: relative;
+      width: 80vw;
+      margin: auto;
       overflow: hidden;
-   }
- }
-
- .slides {
-   width: 500%;
-   height: 650px;
-   display: flex;
-   position: relative;
-   
-   input {
-      display: none;
-   }
-   
-   .slide {
-      width: 20%;
-
-         img {
-         object-fit: cover;
-         width: 1200px;
+      margin-block-start: 6rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      .slides {
          height: 650px;
-         }
+      }
 
+      img {
+         display: none;
+         /* opacity: 0;
+         transition: opacity 1s; */
+      }
+
+      img:first-child {
+         opacity: 1;
       }
    }
 
-   .navigation-manual {
-      position: absolute;
-      width: 1200px;
-      display: flex;
-      justify-content: center;
-      bottom: 40;
+   img.displaySlide {
+      display: block;
+      height: 40rem;
+      /* animation-name: fadeIn;
+      animation-duration: 1.5s; */
+
    }
 
-   .manual-btn {
-      border: 2px solid white;
-      padding: 5px;
-      border-radius: 10px;
+   .slider button {
+      position:absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background-color: white;
+      color: black;
+      border: none;
       cursor: pointer;
-      transition: 1s;
    }
 
-   .manual-btn:not(:last-child) {
-      margin-right: 40px;
+   .prev {
+      left: 0;
    }
 
-   .manual-btn:hover{
-      background: white;
+   .next {
+      right: 0;
    }
 
-   #radio1:checked ~ .first{
-      margin-left: 0;
-
+   @keyframes fadeIn {
+      from {opacity: .5}
+      to {opacity: 1}
    }
-   #radio2:checked ~ .first{
-      margin-left: -20%;
-
-   }
-   #radio3:checked ~ .first{
-      margin-left: -40%;
-
-   }
-   #radio4:checked ~ .first{
-      margin-left: -60%;
-
-   }
-   #radio5:checked ~ .first{
-      margin-left: -80%;
-
+   
+   @keyframes fadeOut {
+      from {opacity: 1}
+      to {opacity: 0}
    }
 
-   .navigation-auto {
-      position: absolute;
-      display: flex;
-      width: 1200px;
-      justify-content: center;
-      bottom: 40;
+   @media screen and (max-width: 80em) {
+      .slider {
+         width: 90vw;
+
+         .slides {
+         height: 500px;
+      }
+      }
+
+      img.displaySlide {
+      display: block;
+      max-height: 500px;
+      object-fit: cover;
+      }
    }
 
-   .navigation-auto div {
-      border: 2px solid white;
-      padding: 5px;
-      border-radius: 10px; 
-      transition: 1s;
+   @media screen and (max-width: 500px) {
+      .prev {
+       background:rgba(255, 255, 255, 0.719)!important;
+       backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+       border-color:rgba(255, 255, 255, 0)!important;
+      }
+
+      .next {
+       background:rgba(255, 255, 255, 0.719)!important;
+       backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+       border-color:rgba(255, 255, 255, 0)!important; 
+      }
    }
 
-   .navigation-auto div:not(:last-child){
-      margin-right: 40px;
+   @media screen and (min-width: 1500px) {
+      .slider {
+         width: 70vw;
+      }
    }
-
-   #radio1:checked ~ .navigation-auto .auto-btn1 {
-      background: white;
-   }
-   #radio2:checked ~ .navigation-auto .auto-btn2 {
-      background: white;
-   }
-   #radio3:checked ~ .navigation-auto .auto-btn3 {
-      background: white;
-   }
-   #radio4:checked ~ .navigation-auto .auto-btn4 {
-      background: white;
-   }
-   #radio5:checked ~ .navigation-auto .auto-btn5 {
-      background: white;
-   }
-
-   @keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0; /* Fully invisible at the start and end */
-  }
-  50% {
-    opacity: 1; /* Fully visible right in the middle (2.5s) */
-  }
-}
 
 </style>
 

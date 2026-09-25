@@ -7,8 +7,14 @@ const subject = "Inquiry from website";
 <header>
     <a href="/" class="logo">Olive Stefanski</a>
 
+    <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+
+        <span class="sr-only">Menu</span>
+    </button>
+    
     <nav>
-        <ul>
+        <ul id="primary-navigation"
+        data-visible="false" class="primary-navigation">
             <li><a href="/#selected-work" >Selected Work</a></li>
             <li><a href="/about">About</a></li>
             <li><a href={`mailto:${email}?subject=${encodeURIComponent(subject)}`}>Contact</a></li>
@@ -17,7 +23,31 @@ const subject = "Inquiry from website";
     </nav>
 </header>
 
+<script>
+    const primaryNav = document.querySelector('.primary-navigation');
+    const navToggle = document.querySelector('.mobile-nav-toggle');
+
+    navToggle?.addEventListener('click', () => {
+        const visible = primaryNav?.getAttribute('data-visible');
+        
+        if (visible === "false") {
+            primaryNav?.setAttribute("data-visible", "true");
+            navToggle?.setAttribute("aria-expanded", "true");
+        } else if (visible === 'true') {
+            primaryNav?.setAttribute("data-visible", "false" );
+            navToggle?.setAttribute("aria-expanded", "false");
+        }
+    })
+
+    
+</script>
+
+
 <style>
+
+body {
+    overflow-x: hidden;
+}
 
 header {
     position: fixed;
@@ -37,6 +67,14 @@ header {
     font-size: 1.7rem;
     font-family: Gloock;
     transition: all 0.45s ease-in;
+}
+
+.mobile-nav-toggle {
+    display: none;
+    }
+
+.sr-only {
+    visibility: hidden;
 }
 
 ul {
@@ -81,27 +119,32 @@ a {
 
     .logo {
         padding: 1rem 1.4rem;
+        font-size: clamp(22px, 3vw, 29px);
 
     }
 
     nav {
-        height: 100vh;
-        width: 60%;
-        background-color: var(--clr-light-turquoise);
-        
+        width: 60vw;
+    }
+    
+
+    ul[data-visible="true"] {
+        transform: translateX(0%);
     }
 
     ul {
         flex-direction: column;
         text-align: center;
-        height: 100%;
-        margin-block-start: 20rem;
+        height: 100vh;
+        padding-top: 18rem;
         gap: 2em;
-
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+        background-color: white;
         
         
         li {
-            font-size: clamp(14px, 3.5vw, 30px);
+            font-size: clamp(14px, 3vw, 28px);
 
             & img {
                 margin-block-start: 1em;
@@ -110,6 +153,25 @@ a {
         }
 
     
+    }
+
+    .mobile-nav-toggle {
+        position: absolute;
+        z-index: 9999;
+        display: block;
+        background-image: url("/Hamburger_icon.svg");
+        background-repeat: no-repeat;
+        background-color: transparent;
+        width: 2.2rem;
+        aspect-ratio: 1; /* This says the width and the height are the same */
+        border: 0;
+        top: 2rem;
+        right: 2rem;
+        color: inherit;
+    }
+
+    .mobile-nav-toggle[aria-expanded = 'true'] {
+        background-image: url("/x_icon.svg");
     }
 }
 
