@@ -117,7 +117,7 @@ li {
 #lightbox-img {
   height: 80vh;
   max-width: 90vw;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 #lightbox {
@@ -137,7 +137,7 @@ li {
 }
 
 .caption {
-    font-size: var(--fs-500);
+    font-size: var(--fs-400);
     font-weight: var(--fw-regular);
 }
 
@@ -148,7 +148,7 @@ body {
     color: var(--clr-onyx);
 }
 
-   @media (min-width: 350px) and (max-width: 80em) {
+@media (min-width: 350px) and (max-width: 80em) {
     .selected-work-submenu  {
 
         padding: 1rem 0.5rem;
@@ -162,7 +162,13 @@ body {
                 font-size: clamp(14px, 2vw, 24px);
             }
         }
+
     }
+
+    .caption {
+        font-size: 1rem;
+    }
+
 
     
     .img-grid {
@@ -180,9 +186,11 @@ body {
         }
     }
 
-   }
 
-   @media screen and (max-width: 349px) {
+
+}
+
+@media screen and (max-width: 349px) {
 
     .selected-work-submenu {
         text-wrap: wrap;
@@ -221,4 +229,4 @@ body {
     } 
         
  
-   }
+}
