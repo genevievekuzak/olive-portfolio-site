@@ -34,6 +34,8 @@ import SubGallery from '../components/SubGallery.astro';
         top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 80%;
+        text-align: center;
         
     }
 
@@ -42,7 +44,7 @@ import SubGallery from '../components/SubGallery.astro';
         display: inline-block;
         font-family: var(--ff-secondary);
         font-weight: var(--fw-regular);
-        font-size: 2.5rem;
+        font-size: 2.0rem;
         bottom: 0;
         opacity: 0;
         color: black;
@@ -58,6 +60,13 @@ import SubGallery from '../components/SubGallery.astro';
         bottom: 0; 
         opacity: 0; 
         transition: ease-in-out 0.5s;
+    }
+
+    @media screen and (max-width: 50em) {
+        
+        .logo-name {
+         font-size: 1.5rem;
+    }
     }
 
 </style>
@@ -92,7 +101,7 @@ import SubGallery from '../components/SubGallery.astro';
                 }, 2300);
             }) 
 
-            sessionStorage.setItem("splash", "true");
+           sessionStorage.setItem("splash", "true");
         } else {
             splashScreen.style.display = "none";
         }
