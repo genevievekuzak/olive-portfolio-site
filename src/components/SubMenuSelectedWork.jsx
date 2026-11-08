@@ -43,7 +43,7 @@ export function SubMenuSelectedWork ({items}) {
          </ul>
         </nav>
         <div className="img-grid">     
-            {sortedUrls.map((item, index) => <figure key={index}><img src={item} alt={item.substring(item.lastIndexOf("/") + 1).replaceAll(/.jpg/gi, ' ').slice(2)} key={index} onClick={() => showImage(item)} loading='lazy'></img><figcaption>{item.substring(item.lastIndexOf("/") + 1).replaceAll(/.jpg/gi, ' ').slice(2)}</figcaption></figure>)}   
+            {sortedUrls.map((item, index) => <figure key={index}><img src={item} alt={item.substring(item.lastIndexOf("/") + 1).replaceAll(/.jpg/gi, ' ').slice(2)} key={index} onClick={() => showImage(item)} loading='lazy'></img><figcaption>{item.substring(item.lastIndexOf("/") + 1).replaceAll(/\.(jpe?g|JPG)/g, '').slice(2)}</figcaption></figure>)}   
         </div>
 
         {
@@ -51,7 +51,7 @@ export function SubMenuSelectedWork ({items}) {
         <div id="lightbox" onClick={hideLightBox}>
             
           <img id="lightbox-img" src={imageToShow}></img>
-          <h5 className='caption'>{imageToShow.substring(imageToShow.lastIndexOf("/") + 1).replaceAll(/.jpg/gi, ' ').slice(2)}</h5>
+          <h5 className='caption'>{imageToShow.substring(imageToShow.lastIndexOf("/") + 1).replaceAll(/\.(jpe?g|JPG)/g, '').slice(2)}</h5>
         </div>
        : ""
       }
