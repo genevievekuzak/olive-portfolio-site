@@ -139,6 +139,7 @@ li {
 .caption {
     font-size: var(--fs-400);
     font-weight: var(--fw-regular);
+    text-align: center;
 }
 
 body {
