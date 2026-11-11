@@ -8,7 +8,7 @@ const isNetlifyEnvironment = process.env.NETLIFY === 'true';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
-  // trailingSlash: 'ignore',
+  trailingSlash: 'ignore',
   output: 'server',
   adapter: netlify({
     edgeMiddleware: isNetlifyEnvironment,
